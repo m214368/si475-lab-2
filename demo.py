@@ -11,9 +11,9 @@ def reverse(x,y,z,psi,phi,theta):
 	#calculate angle 2
 	one = (T[0,3]-.012-.126*T[0,0])/(T[1,1]*.196)
 	two = (T[2,3]-.077-.126*T[2,0])/(.196)
-	angleB = atan2(one,two)
+	angleB = atan2(one,two) - .858
 	#calculate angle 3
-	angleC = atan2(T[1,0],T[0,0])-angleB
+	angleC = atan2(T[1,0],T[0,0])-angleB+.858
 
 	print('angles')
 	print(angleA,angleB,angleC)
