@@ -16,19 +16,26 @@ def reverse(x,y,z,psi,phi,theta):
 	#calculate angle 3
 	angleC = phi-angleB
 
-	print('angles')
+	print('\nCalculated Angles\n')
 	print(angleA,angleB,angleC)
 	test = arm.arm1()  
 	test.move(angleA,angleB,angleC)
-	print('test')
+	print('\nMoving to the calculated angles\n')
 	test.pose()
 
 def testCase(angleA,angleB,angleC):
-	print(str(angleA)+" "+str(angleB)+" "+str(angleC))
+	print('~~~~~~~~~~~start~~~~~~~~~~~~~~~')
+	print("Generating test case with angles:"+str(angleA)+" "+str(angleB)+" "+str(angleC))
 	test.move(angleA,angleB,angleC)
+	print("Test case generated, testing")
 	x,y,z,psi,phi,theta = test.pose()
-	print(reverse(x,y,z,psi,phi,theta))
+	reverse(x,y,z,psi,phi,theta)
+	print('~~~~~~~~~~~end~~~~~~~~~~~~~~~~~')
 
 testCase(0.5,0.5,0.5)
-
+testCase(0,0,0)
+testCase(0,-.7,0)
+testCase(.7,0,0)
+testCase(0,0,.7)
+testCase(200,200,200)
 

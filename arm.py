@@ -30,7 +30,7 @@ class arm1(arm):
 		super(arm1,self).__init__(seg)
 
 	def move(self,u1,u2,u4):
-		print('moving to',u1,u2,u4)
+		print('moving to '+str(u1)+','+str(u2)+','+str(u4))
 		super(arm1,self).move([0,u1,-u2,0,-u4])
 		self.ac.set_joints([u1,u2,0,u4])
 
