@@ -2,18 +2,19 @@ import functions as fun
 from math import atan2
 import arm
 
+test = arm.arm1()  
 
 def reverse(x,y,z,psi,phi,theta):
 	#calculate T
-	T = fun.T(x,y,z,psi,phi,theta)
+	T = fun.T(x,y,z,psi,phi,-theta)#negate theta b/c arm design
 	#calculate angle 1
 	angleA = atan2(-T[0,1],T[1,1])
 	#calculate angle 2
 	one = (T[0,3]-.012-.126*T[0,0])/(T[1,1]*.196)
 	two = (T[2,3]-.077-.126*T[2,0])/(.196)
-	angleB = atan2(one,two) - .874
+	angleB = atan2(one,two) - .853
 	#calculate angle 3
-	angleC = atan2(T[1,0],T[0,0])-angleB
+	angleC = phi-angleB
 
 	print('angles')
 	print(angleA,angleB,angleC)
@@ -22,18 +23,29 @@ def reverse(x,y,z,psi,phi,theta):
 	print('test')
 	test.pose()
 
-print("one")
-#(.2,-.5,-.4)
+def testCase(aa,bb,cc):
+	print(str(aa)+" "+str(bb)+" "+str(cc))
+	test.move(aa,bb,cc)
+	x,y,z,a,b,c = test.pose()
+	print(reverse(x,y,z,a,b,c))
 
+testCase(0.5,0.5,0.5)
+
+#print("one")
+#(.2,-.5,-.4)
+#test.move(0,0,0)
+#x,y,z,a,b,c = test.pose()
+#print(reverse(x,y,z,a,b,c))
+#print(reverse(test.pose()))
 #('x = ', 0.19241939581316006)
 #('y = ', 0.036572822131738902)
 #('z = ', 0.29600097135780656)
 #('roll  =', -1.295849689882289e-17)
 #('pitch =', -0.6000000000000001)
 #('yaw   =', 0.19999999999999998)
-reverse(.192,.036,.296,0,-.6,.2)
+#reverse(.192,.036,.296,0,-.6,.2)
 
-print("two")
+#print("two")
 #(0,0,0)
 
 #('x = ', 0.28471563338320116)
@@ -42,9 +54,11 @@ print("two")
 #('roll  =', 0.0)
 #('pitch =', -0.0)
 #('yaw   =', -1.5407439555097887e-33)
-reverse(.285,0,.2,0,0,0)
+#reverse(.285,0,.2,0,0,0)
 
-print("three")
+#print("three")
+#test.move(.5,.5,.5)
+#test.pose()
 #(.5,.5,.5)
 
 #('x = ', 0.14996623417522889)
@@ -53,7 +67,7 @@ print("three")
 #('roll  =', -8.043990182777856e-16)
 #('pitch =', 1.5)
 #('yaw   =', 0.5000000000000013)
-reverse(.15,.075,-.052,0,1.5,.5)
+#reverse(.15,.075,-.052,0,1.5,.5)
 
 #print("four")
 #myarm.move(0,0,.7)
@@ -63,4 +77,3 @@ reverse(.15,.075,-.052,0,1.5,.5)
 
 #print("six")
 #myarm.move(.7,0,0)
-

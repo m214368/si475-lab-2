@@ -19,7 +19,7 @@ class arm(object):
 
 class arm1(arm):
 	def __init__(self):
-		#self.ac=ArmController()
+		self.ac=ArmController()
 		seg = list()
 		seg.append(s.segment(0,.012,0,0))
 		seg.append(s.segment(0,0,.077,(np.pi/2)))
@@ -30,20 +30,24 @@ class arm1(arm):
 		super(arm1,self).__init__(seg)
 
 	def move(self,u1,u2,u4):
+		print('moving to',u1,u2,u4)
 		super(arm1,self).move([0,u1,-u2,0,-u4])
-		#self.ac.set_joints([u1,u2,u3,u4])
+		self.ac.set_joints([u1,u2,0,u4])
 
 
 	def pose(self):
 		T = self.matrix()
-		print("x = ",T[0,3])
-		print("y = ",T[1,3])
-		print("z = ",T[2,3])
+		x=T[0,3]
+		y=T[1,3]
+		z=T[2,3]
+		print("x = ",x)
+		print("y = ",y)
+		print("z = ",z)
 		phi = atan2(-T[2,0],sqrt(T[0,0]*T[0,0]+T[1,0]*T[1,0]))
 		theta = -atan2(T[1,0]/cos(phi),T[0,0]/cos(phi))
 		psi = atan2(T[2,1]/cos(phi),T[2,2]/cos(phi))
 		print("roll  =", psi)
 		print("pitch =", phi)
 		print("yaw   =", theta)
-		#print(self.ac.get_pose())
-
+		print(self.ac.get_pose())
+		return(x,y,z,psi,phi,theta)
