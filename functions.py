@@ -38,5 +38,5 @@ def translateZ(z):
 def T(x,y,z,psi,phi,theta):
     return np.array([[cos(theta)*cos(phi),-sin(theta)*cos(psi)+cos(theta)*sin(phi)*sin(psi),sin(theta)*sin(psi)+cos(theta)*sin(phi)*cos(psi),x],
                      [sin(theta)*cos(phi),cos(theta)*cos(psi)+sin(theta)*sin(phi)*sin(psi),-cos(theta)*sin(psi)+sin(theta)*sin(phi)*cos(psi),y],
-                     [-sin(phi),cos(phi)*sin(psi),cos(theta)*cos(psi),z],
+                     [-sin(phi),cos(phi)*sin(psi),cos(phi)*cos(psi),z],
                      [0,0,0,1]])
