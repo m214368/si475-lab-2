@@ -23,57 +23,12 @@ def reverse(x,y,z,psi,phi,theta):
 	print('test')
 	test.pose()
 
-def testCase(aa,bb,cc):
-	print(str(aa)+" "+str(bb)+" "+str(cc))
-	test.move(aa,bb,cc)
-	x,y,z,a,b,c = test.pose()
-	print(reverse(x,y,z,a,b,c))
+def testCase(angleA,angleB,angleC):
+	print(str(angleA)+" "+str(angleB)+" "+str(angleC))
+	test.move(angleA,angleB,angleC)
+	x,y,z,psi,phi,theta = test.pose()
+	print(reverse(x,y,z,psi,phi,theta))
 
 testCase(0.5,0.5,0.5)
 
-#print("one")
-#(.2,-.5,-.4)
-#test.move(0,0,0)
-#x,y,z,a,b,c = test.pose()
-#print(reverse(x,y,z,a,b,c))
-#print(reverse(test.pose()))
-#('x = ', 0.19241939581316006)
-#('y = ', 0.036572822131738902)
-#('z = ', 0.29600097135780656)
-#('roll  =', -1.295849689882289e-17)
-#('pitch =', -0.6000000000000001)
-#('yaw   =', 0.19999999999999998)
-#reverse(.192,.036,.296,0,-.6,.2)
 
-#print("two")
-#(0,0,0)
-
-#('x = ', 0.28471563338320116)
-#('y = ', -7.8377395145430601e-18)
-#('z = ', 0.20500000000000002)
-#('roll  =', 0.0)
-#('pitch =', -0.0)
-#('yaw   =', -1.5407439555097887e-33)
-#reverse(.285,0,.2,0,0,0)
-
-#print("three")
-#test.move(.5,.5,.5)
-#test.pose()
-#(.5,.5,.5)
-
-#('x = ', 0.14996623417522889)
-#('y = ', 0.075371297244299015)
-#('z = ', -0.051586657275799155)
-#('roll  =', -8.043990182777856e-16)
-#('pitch =', 1.5)
-#('yaw   =', 0.5000000000000013)
-#reverse(.15,.075,-.052,0,1.5,.5)
-
-#print("four")
-#myarm.move(0,0,.7)
-
-#print("five")
-#myarm.move(0,.7,0)
-
-#print("six")
-#myarm.move(.7,0,0)
